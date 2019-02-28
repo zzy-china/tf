@@ -14,4 +14,4 @@ class MyModel(tf.keras.Model):
     def call(self, inputs, training=None, mask=None):
         return super().call(inputs, training, mask)
 
-model = MyModel()
+

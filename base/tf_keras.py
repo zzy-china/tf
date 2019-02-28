@@ -28,3 +28,7 @@ model = k.Model(inputs = inputs,outputs =pre)
 model.compile(optimizer=tf.train.AdamOptimizer(1e-3),loss=k.losses.categorical_crossentropy,metrics=[k.metrics.mse])
 
 model.fit(data,labels,epochs=10,batch_size=32,validation_data=(val_data,val_labels))
+
+#Dataset
+dataset = tf.data.Dataset.from_tensor_slices((data,labels)).batch(32).repeat()
+model.fit(dataset,epochs=10,steps_per_epoch=30)
